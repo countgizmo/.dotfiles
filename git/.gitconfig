@@ -1,0 +1,24 @@
+[credential]
+	helper = osxkeychain
+[fetch]
+	prune = true
+[diff]
+  colorMoved = zebra
+  tool = difftastic
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+  difftool = true
+[alias]
+  dft = difftool
+[core]
+	editor = nvim
+[alias]
+    lol = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+[user]
+	name = countgizmo
+	email = count.gizmo@gmail.com
+[pull]
+	rebase = true

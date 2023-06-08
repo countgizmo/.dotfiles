@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+is_git_directory() {
+  printf "$1;$(cd $1; git rev-parse --is-inside-work-tree)\n"
+}
+
+export -f is_git_directory
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+  personal=$(find ~/Projects/private/computer-enhance ~/Projects/private/zig ~/Projects/private/clojure -mindepth 1 -maxdepth 1 -type d -not -iwholename '*.git*')
+  #workflows_example=$(find ~/Projects/bare-repo.git -mindepth 1 -maxdepth 1 -type d -exec bash -c 'for pathname do is_git_directory "$pathname"; done' bash {} + \
+  #  | grep ";true" | sed "s/;true//")
+  selected=$(printf "${personal}\n${workflows_example}" | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $selected_name -c $selected
+    exit 0
+fi
+
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected
+fi
+
+tmux switch-client -t $selected_name
