@@ -9,7 +9,7 @@ export -f is_git_directory
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-  personal=$(find ~/Projects/private/computer-enhance ~/Projects/private/zig ~/Projects/private/clojure -mindepth 1 -maxdepth 1 -type d -not -iwholename '*.git*')
+  personal=$(find ~/.dotfiles ~/Projects/private/computer-enhance ~/Projects/private/zig ~/Projects/private/clojure -mindepth 1 -maxdepth 1 -type d -not -iwholename '*.git*')
   #workflows_example=$(find ~/Projects/bare-repo.git -mindepth 1 -maxdepth 1 -type d -exec bash -c 'for pathname do is_git_directory "$pathname"; done' bash {} + \
   #  | grep ";true" | sed "s/;true//")
   selected=$(printf "${personal}\n${workflows_example}" | fzf)

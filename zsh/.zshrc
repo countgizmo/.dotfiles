@@ -77,9 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git
-	 zsh-syntax-highlighting
-	 zsh-autosuggestions)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,6 +107,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+bindkey -s ^f "tmux-sessionizer\n"
 
 alias vim="nvim"
 alias vi="nvim"
@@ -125,3 +124,6 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 export PATH="/Users/ziggy/.local/bin:$PATH"
+
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
