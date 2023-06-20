@@ -66,3 +66,6 @@ vim.opt.spell = false
 function ToggleSpellCheck()
     vim.opt.spell = not(vim.opt.spell:get())
 end
+
+-- Zig autoformatting disabled
+vim.g["zig_fmt_autosave"] = 0

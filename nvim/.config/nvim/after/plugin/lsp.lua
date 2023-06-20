@@ -13,7 +13,7 @@ local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<Tab>'] = cmp.mapping.complete(),
   ['<C-e>'] = cmp.mapping.abort(),
-  ['<C-Enter>'] = cmp.mapping.confirm({ select = true }),
+  ['<CR>'] = cmp.mapping.confirm({ select = true }),
   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),

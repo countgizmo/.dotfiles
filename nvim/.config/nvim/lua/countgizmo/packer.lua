@@ -74,4 +74,10 @@ return require('packer').startup(function(use)
 
   use 'vimwiki/vimwiki'
 
+  -- Swift
+  use 'keith/swift.vim'
+
+  -- Zig
+  use 'ziglang/zig.vim'
+
 end)
