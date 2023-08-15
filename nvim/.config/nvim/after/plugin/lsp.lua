@@ -46,7 +46,8 @@ end)
 
 lsp.setup()
 
-require('lspconfig').lua_ls.setup {
+local lspconfig = require('lspconfig')
+lspconfig.lua_ls.setup {
   settings = {
     Lua = {
       diagnostics = {
@@ -55,6 +56,14 @@ require('lspconfig').lua_ls.setup {
     }
   }
 }
+
+lspconfig.zls.setup {
+  on_attach = function(_, bufnr)
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    require('completion').on_attach()
+  end
+}
+
 
 vim.diagnostic.config({
     virtual_text = false,

@@ -80,4 +80,12 @@ return require('packer').startup(function(use)
   -- Zig
   use 'ziglang/zig.vim'
 
+  -- Go
+  use 'ray-x/go.nvim'
+  use 'fatih/vim-go'
+
+  -- JS Land
+  use 'pangloss/vim-javascript'
+  use 'peitalin/vim-jsx-typescript'
+
 end)

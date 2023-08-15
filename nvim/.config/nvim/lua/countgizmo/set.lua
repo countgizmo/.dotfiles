@@ -35,8 +35,8 @@ vim.opt.splitright = true
 
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = '>-',
-  trail = '#'
+  tab = '→ ',
+  trail = '∙'
 }
 
 -- so that `` is visible in markdown files
@@ -58,7 +58,12 @@ vim.g["conjure#log#strip_ansi_escape_sequences_line_limit"] = 0
 --  end,
 --})
 
-vim.g.vimwiki_list = {{path =  '~/Documents/vimwiki'}}
+vim.cmd "autocmd FileType vimwiki call pencil#init()"
+
+vim.g.vimwiki_list = {
+  {path =  '~/Documents/vimwiki',
+   auto_diary_index = 1}
+}
 
 vim.opt.spelllang = "en_us"
 vim.opt.spell = false

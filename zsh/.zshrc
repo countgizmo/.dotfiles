@@ -124,6 +124,10 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 export PATH="/Users/ziggy/.local/bin:$PATH"
+export PATH="/Users/ziggy/Projects/private/odin/Odin:$PATH"
+export PATH="/Users/ziggy/zig:$PATH"
+export PATH="/Users/ziggy/zls/zig-out/bin:$PATH"
+
 
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
