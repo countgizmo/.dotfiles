@@ -19,13 +19,14 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Paste over without losing the copied value
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
-
 -- Quickfix list
 vim.keymap.set("n", "[q", ":cprev<CR>")
 vim.keymap.set("n", "]q", ":cnext<CR>")
 vim.keymap.set("n", "<leader>co", ":copen<CR>")
 vim.keymap.set("n", "<leader>cc", ":cclose<CR>")
 
-
 -- Copy with {}
 vim.keymap.set("n", "YY", "va{Vy")
+
+-- Nvim REST
+--vim.keymap.set("n", "<leader>r", "<Plug>RestNvim")

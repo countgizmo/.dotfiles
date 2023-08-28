@@ -21,12 +21,14 @@ return require('packer').startup(function(use)
     requires = "rktjmp/lush.nvim"
   }
 
-
   use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use 'mbbill/undotree'
+
+  -- Git
   use 'tpope/vim-fugitive'
+  use 'lewis6991/gitsigns.nvim'
 
-
+  -- LSP
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
@@ -87,5 +89,7 @@ return require('packer').startup(function(use)
   -- JS Land
   use 'pangloss/vim-javascript'
   use 'peitalin/vim-jsx-typescript'
+
+  use 'rest-nvim/rest.nvim'
 
 end)

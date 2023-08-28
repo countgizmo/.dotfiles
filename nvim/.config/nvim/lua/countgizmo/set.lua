@@ -58,8 +58,6 @@ vim.g["conjure#log#strip_ansi_escape_sequences_line_limit"] = 0
 --  end,
 --})
 
-vim.cmd "autocmd FileType vimwiki call pencil#init()"
-
 vim.g.vimwiki_list = {
   {path =  '~/Documents/vimwiki',
    auto_diary_index = 1}
