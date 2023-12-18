@@ -36,7 +36,7 @@ vim.opt.splitright = true
 vim.opt.list = true
 vim.opt.listchars = {
   tab = '→ ',
-  trail = '∙'
+  trail = '>'
 }
 
 -- so that `` is visible in markdown files
@@ -52,6 +52,10 @@ vim.cmd "autocmd FileType gitcommit setlocal cc=+1"
 -- tell Conjure to not strip ANSI sequences
 vim.g["conjure#log#strip_ansi_escape_sequences_line_limit"] = 0
 
+-- Conjure HUD disabled
+vim.g["conjure#log#hud#enabled"] = true
+vim.g["conjure#log#hud#ignore_low_priority"] = true
+
 --vim.api.nvim_create_autocmd({"BufEnter", "BufNew"}, {
 --  pattern = {"*.wiki"},
 --  callback = function()
@@ -66,9 +70,14 @@ vim.g.vimwiki_list = {
 vim.opt.spelllang = "en_us"
 vim.opt.spell = false
 
-function ToggleSpellCheck()
-    vim.opt.spell = not(vim.opt.spell:get())
-end
-
 -- Zig autoformatting disabled
 vim.g["zig_fmt_autosave"] = 0
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = {"*"},
+    callback = function(_)
+        local save_cursor = vim.fn.winsaveview()
+        vim.cmd([[%s/\s\+$//e]])
+        vim.fn.winrestview(save_cursor)
+    end,
+})

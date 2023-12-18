@@ -108,6 +108,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^b "kitty @ set-colors -a \"~/.config/kitty/dracula.conf\"\n"
+bindkey -s ^w "kitty @ set-colors -a \"~/.config/kitty/CLRS.conf\"\n"
 
 alias vim="nvim"
 alias vi="nvim"

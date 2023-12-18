@@ -5,7 +5,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', tag = '0.1.4',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
   use 'morhetz/gruvbox'
   use 'p00f/alabaster.nvim'
   use 'folke/tokyonight.nvim'
+  use 'blazkowolf/gruber-darker.nvim'
   use {
     "mcchrish/zenbones.nvim",
     -- Optionally install Lush. Allows for more configuration or extending the colorscheme
@@ -23,10 +24,12 @@ return require('packer').startup(function(use)
 
   use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use 'mbbill/undotree'
+  use 'smithbm2316/centerpad.nvim'
 
   -- Git
   use 'tpope/vim-fugitive'
   use 'lewis6991/gitsigns.nvim'
+  use 'sindrets/diffview.nvim'
 
   -- LSP
   use {
@@ -52,7 +55,9 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- SQL
   use 'tpope/vim-dadbod'
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons' }
@@ -62,8 +67,11 @@ return require('packer').startup(function(use)
 
   use 'preservim/vim-pencil'
 
+  -- Toggle comments
+  use 'terrortylor/nvim-comment'
+
   -- Terminal codes (for colorful log output)
-  use { 'm00qek/baleia.nvim', tag = 'v1.2.0' }
+  use { 'm00qek/baleia.nvim', tag = 'v1.3.0' }
 
   -- Clojure
   use 'Olical/conjure'
@@ -90,6 +98,10 @@ return require('packer').startup(function(use)
   use 'pangloss/vim-javascript'
   use 'peitalin/vim-jsx-typescript'
 
+  -- Running HTTP requests
   use 'rest-nvim/rest.nvim'
+
+  use 'tpope/vim-unimpaired'
+  use 'skywind3000/asyncrun.vim'
 
 end)

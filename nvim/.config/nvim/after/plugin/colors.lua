@@ -5,9 +5,9 @@ function TechnicolorRainbow(color, daytime)
   vim.opt.background = daytime
 end
 
-TechnicolorRainbow()
-
 function ClojureColors()
   TechnicolorRainbow("alabaster")
   vim.opt.background = 'light'
 end
+
+TechnicolorRainbow("zenbones")

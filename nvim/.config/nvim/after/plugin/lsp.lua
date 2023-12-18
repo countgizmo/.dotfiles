@@ -9,7 +9,7 @@ lsp.ensure_installed({
 })
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<Tab>'] = cmp.mapping.complete(),
   ['<C-e>'] = cmp.mapping.abort(),
@@ -20,7 +20,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 lsp.set_preferences({
-  sign_icons = { }
+  sign_icons = {}
 })
 
 lsp.setup_nvim_cmp({
@@ -28,7 +28,8 @@ lsp.setup_nvim_cmp({
 })
 
 lsp.on_attach(function(_, bufnr)
-  local opts = {buffer = bufnr, remap = false}
+  local opts = { buffer = bufnr, remap = false }
+  lsp.default_keymaps({ buffer = bufnr })
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references fname_width=50<cr>", opts)
@@ -42,6 +43,10 @@ lsp.on_attach(function(_, bufnr)
   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<C-k>", function() vim.lsp.buf.signature_help() end, opts)
+
+  vim.keymap.set({ 'n', 'x' }, 'gq', function()
+    vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+  end, opts)
 end)
 
 lsp.setup()
@@ -64,8 +69,11 @@ lspconfig.zls.setup {
   end
 }
 
+lspconfig.sourcekit.setup {
+  cmd = {'/Library/Developer/CommandLineTools/usr/bin/sourcekit-lsp'}
+}
 
 vim.diagnostic.config({
-    virtual_text = false,
-    underline = true,
+  virtual_text = false,
+  underline = true,
 })

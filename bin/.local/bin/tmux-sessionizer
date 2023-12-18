@@ -4,6 +4,12 @@ is_git_directory() {
   printf "$1;$(cd $1; git rev-parse --is-inside-work-tree)\n"
 }
 
+get_workflows() {
+  local filename=$1
+  find "$filename" -mindepth 1 -maxdepth 1 -type d -exec bash -c 'for pathname do is_git_directory "$pathname"; done' bash {} + \
+    | grep ";true" | sed "s/;true//"
+}
+
 export -f is_git_directory
 
 if [[ $# -eq 1 ]]; then
@@ -25,17 +31,19 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
+selected_root_name=$(basename "$(dirname "$selected")" | tr . _)
 selected_name=$(basename "$selected" | tr . _)
+session_name="$selected_root_name/$selected_name"
 tmux_running=$(pgrep tmux)
 
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    tmux new-session -s $session_name -c $selected
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+if ! tmux has-session -t=$session_name 2> /dev/null; then
+    tmux new-session -ds $session_name -c $selected
 fi
 
-tmux switch-client -t $selected_name
+tmux switch-client -t $session_name

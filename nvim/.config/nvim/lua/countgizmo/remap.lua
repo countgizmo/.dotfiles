@@ -20,10 +20,12 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Quickfix list
-vim.keymap.set("n", "[q", ":cprev<CR>")
-vim.keymap.set("n", "]q", ":cnext<CR>")
 vim.keymap.set("n", "<leader>co", ":copen<CR>")
 vim.keymap.set("n", "<leader>cc", ":cclose<CR>")
+
+-- Location list
+vim.keymap.set("n", "<leader>lo", ":lopen<CR>")
+vim.keymap.set("n", "<leader>lc", ":lclose<CR>")
 
 -- Copy with {}
 vim.keymap.set("n", "YY", "va{Vy")
