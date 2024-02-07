@@ -1,4 +1,3 @@
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -36,7 +35,7 @@ vim.opt.splitright = true
 vim.opt.list = true
 vim.opt.listchars = {
   tab = '→ ',
-  trail = '>'
+  trail = '▮'
 }
 
 -- so that `` is visible in markdown files
@@ -73,6 +72,7 @@ vim.opt.spell = false
 -- Zig autoformatting disabled
 vim.g["zig_fmt_autosave"] = 0
 
+-- Delete trainig spaces on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = {"*"},
     callback = function(_)
