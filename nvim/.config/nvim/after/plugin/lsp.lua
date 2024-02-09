@@ -77,3 +77,18 @@ vim.diagnostic.config({
   virtual_text = false,
   underline = true,
 })
+
+-- Disables diagnostics for Conjure log buffer
+vim.api.nvim_create_autocmd('DiagnosticChanged', {
+  pattern = {"conjure-log-*"},
+  callback = function(args)
+    local diagnostics = args.data.diagnostics
+
+    if (diagnostics[1] ~= nil) then
+      local bufnr = diagnostics[1]["bufnr"]
+      local namespace = diagnostics[1]["namespace"]
+      vim.diagnostic.disable(bufnr)
+      vim.diagnostic.reset(namespace, bufnr)
+    end
+  end,
+})
