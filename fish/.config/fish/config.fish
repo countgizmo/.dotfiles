@@ -6,3 +6,6 @@ alias vim="nvim"
 alias vi="nvim"
 alias ls="exa -l -a"
 alias l="ls"
+
+if status is-interactive
+end

@@ -1,5 +1,14 @@
 function fish_prompt
-    string join '' -- \
-  (set_color green) (prompt_pwd --full-length-dirs 2) (set_color normal) \
-  (set_color purple) (fish_git_prompt) (set_color normal) ' > '
+  set_color purple
+
+  # Only show git_prompt if we're in a repo
+  set is_inside_git $(git rev-parse --is-inside-work-tree 2> /dev/null)
+  if test -d .git
+    or test "$is_inside_git" = "true"
+    printf '%s\n' (fish_git_prompt)
+  end
+
+  set_color green
+  printf '%s -> ' (prompt_pwd --full-length-dirs 1)
+  set_color normal
 end
