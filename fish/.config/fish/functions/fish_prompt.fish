@@ -5,10 +5,10 @@ function fish_prompt
   set is_inside_git $(git rev-parse --is-inside-work-tree 2> /dev/null)
   if test -d .git
     or test "$is_inside_git" = "true"
-    printf '%s\n' (fish_git_prompt)
+    printf '%s ' (fish_git_prompt)
   end
 
   set_color green
-  printf '%s -> ' (prompt_pwd --full-length-dirs 1)
+  printf '-> '
   set_color normal
 end

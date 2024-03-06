@@ -9,3 +9,4 @@ alias l="ls"
 
 if status is-interactive
 end
+

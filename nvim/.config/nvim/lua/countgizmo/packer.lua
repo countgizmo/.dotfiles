@@ -81,6 +81,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-repeat'
   use {'guns/vim-clojure-highlight', ft = 'clojure'}
   use {'clojure-vim/clojure.vim', ft = 'clojure'}
+  use {'https://gitlab.com/invertisment/conjure-clj-additions-cider-nrepl-mw'}
 
   use 'vimwiki/vimwiki'
 
@@ -100,6 +101,9 @@ return require('packer').startup(function(use)
 
   -- Running HTTP requests
   use 'rest-nvim/rest.nvim'
+
+  -- AI
+  use { 'sourcegraph/sg.nvim', run = 'nvim -l build/init.lua' }
 
   use 'tpope/vim-unimpaired'
   use 'skywind3000/asyncrun.vim'

@@ -30,5 +30,5 @@ vim.keymap.set("n", "<leader>lc", ":lclose<CR>")
 -- Copy with {}
 vim.keymap.set("n", "YY", "va{Vy")
 
--- Nvim REST
---vim.keymap.set("n", "<leader>r", "<Plug>RestNvim")
+-- Jump between test and function
+vim.keymap.set("n","tg", ":CcaNsJumpToAlternate<CR>")

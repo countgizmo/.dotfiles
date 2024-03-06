@@ -12,6 +12,7 @@ require("telescope").setup {
       vertical = {
         height = 0.9,
         width = 0.9,
+        preview_cutoff = 0,
         preview_height = 0.6,
       }
     },
