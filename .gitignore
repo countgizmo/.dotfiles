@@ -1,3 +1,5 @@
 nvim/.config/nvim/plugin/
 bin/.local/share/
 bin/.local/state/
+newsboat/.newsboat/cache.db
+newsboat/.newsboat/history.cmdline
