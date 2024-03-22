@@ -72,6 +72,9 @@ vim.opt.spell = false
 -- Zig autoformatting disabled
 vim.g["zig_fmt_autosave"] = 0
 
+-- Netrw
+vim.g["netrw_keepdir"] = 0
+
 -- Delete trainig spaces on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = {"*"},
