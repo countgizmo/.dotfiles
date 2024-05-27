@@ -24,7 +24,9 @@ cmp.setup({
 
 cmp.setup({
   sources = {
-    {name = 'nvim_lsp'},
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'path' },
   }
 })
 
@@ -54,15 +56,14 @@ lsp.on_attach(function(_, bufnr)
   end, opts)
 end)
 
-  require('mason').setup({})
-  require('mason-lspconfig').setup({
-    ensure_installed = {'tsserver', 'eslint', 'lua_ls', 'clojure_lsp'},
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {'tsserver', 'eslint', 'lua_ls', 'clojure_lsp'},
 
-    handlers = {
-      lsp.default_setup,
-    },
-  })
-
+  handlers = {
+    lsp.default_setup,
+  },
+})
 
 lsp.setup()
 
@@ -83,6 +84,10 @@ lspconfig.zls.setup {
     require('completion').on_attach()
   end
 }
+
+-- lspconfig.clojure_lsp.setup({
+--   single_file_support = false,
+-- })
 
 lspconfig.sourcekit.setup {
   cmd = {'/Library/Developer/CommandLineTools/usr/bin/sourcekit-lsp'}

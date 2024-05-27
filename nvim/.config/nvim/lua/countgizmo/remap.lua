@@ -2,7 +2,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Clear hlsearch
-vim.keymap.set("n", "<leader>k", ":nohlsearch<CR>")
+vim.keymap.set("n", "<leader>k", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- Exit terminal
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Resize with arrows
 vim.keymap.set("n", "<C-Up>", ":resize +2<CR>")
