@@ -2,4 +2,8 @@ nvim/.config/nvim/plugin/
 bin/.local/share/
 bin/.local/state/
 newsboat/.newsboat/cache.db
+newsboat/.newsboat/cache.db.lock
 newsboat/.newsboat/history.cmdline
+fish/.config/fish/completions/
+fish/.config/fish/config.fish.backup
+bin/.local/pipx/
