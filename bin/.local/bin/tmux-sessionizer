@@ -20,9 +20,12 @@ else
     ~/Projects/private/clojure \
     ~/Projects/private/xcode \
     ~/Projects/private/go \
-    ~/Projects/private/frontend-masters \
     -mindepth 1 -maxdepth 1 -type d -not -iwholename '*.git')
-  selected=$(printf "${personal}\n${workflows_example}" | fzf)
+
+  server_workflows=$(get_workflows ~/Projects/humbleai/humble-server.git)
+  hai_workflows=$(get_workflows ~/Projects/humbleai/hai)
+  app_script_workflows=$(get_workflows ~/Projects/humbleai/humble-app-script.git)
+  selected=$(printf "${personal}\n${server_workflows}\n${hai_workflows}\n${app_script_workflows}" | fzf)
 fi
 
 if [[ -z $selected ]]; then

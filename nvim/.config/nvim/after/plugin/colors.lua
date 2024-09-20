@@ -11,3 +11,8 @@ function ClojureColors()
 end
 
 TechnicolorRainbow("zenbones")
+
+vim.g.zenbones = {
+  lightness = "dim",
+  darkness = "warm",
+}
