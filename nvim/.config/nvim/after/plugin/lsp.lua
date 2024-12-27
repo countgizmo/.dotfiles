@@ -10,12 +10,12 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
-    -- ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
-    ['<Tab>'] = cmp.mapping.complete(),
+    ['<C-Tab>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
@@ -58,7 +58,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'tsserver', 'eslint', 'lua_ls', 'clojure_lsp'},
+  ensure_installed = {'eslint', 'lua_ls', 'clojure_lsp'},
 
   handlers = {
     lsp.default_setup,
@@ -78,16 +78,11 @@ lspconfig.lua_ls.setup {
   }
 }
 
-lspconfig.zls.setup {
-  on_attach = function(_, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    require('completion').on_attach()
-  end
-}
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- lspconfig.clojure_lsp.setup({
---   single_file_support = false,
--- })
+lspconfig.zls.setup {
+  capabilityiess = capabilities,
+}
 
 lspconfig.sourcekit.setup {
   cmd = {'/Library/Developer/CommandLineTools/usr/bin/sourcekit-lsp'}

@@ -5,7 +5,7 @@ set -x PATH $PATH /Users/ziggy/Projects/private/flutter/bin
 
 alias vim="nvim"
 alias vi="nvim"
-alias ls="exa -l -a"
+alias ls="eza -l -a"
 alias l="ls"
 
 if status is-interactive

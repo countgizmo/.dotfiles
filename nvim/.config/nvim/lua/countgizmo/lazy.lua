@@ -35,6 +35,17 @@ require("lazy").setup({
     dependencies = {'rktjmp/lush.nvim'}
   },
 
+  -- Ui effects
+  {
+    "sphamba/smear-cursor.nvim",
+    opts = {                         -- Default  Range
+      cursor_color = "#4DA4EA",
+      stiffness = 0.8,               -- 0.6      [0, 1]
+      trailing_stiffness = 0.5,      -- 0.3      [0, 1]
+      distance_stop_animating = 0.5, -- 0.1      > 0
+      hide_target_hack = false,      -- true     boolean
+    },
+  },
 
   {
     'nvim-treesitter/nvim-treesitter',
@@ -134,9 +145,6 @@ require("lazy").setup({
       require("rest-nvim").setup()
     end,
   },
-
-  -- AI
-  { 'sourcegraph/sg.nvim', build = 'nvim -l build/init.lua' },
 
   'tpope/vim-unimpaired',
   'skywind3000/asyncrun.vim',

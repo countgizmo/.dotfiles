@@ -28,7 +28,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 500
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
