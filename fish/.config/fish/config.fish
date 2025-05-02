@@ -2,6 +2,7 @@ set -x PATH $PATH /Users/ziggy/.local/bin
 set -x PATH $PATH /Users/ziggy/zig
 set -x PATH $PATH /Users/ziggy/zls/zig-out/bin
 set -x PATH $PATH /Users/ziggy/Projects/private/flutter/bin
+set -x PATH $PATH /usr/local/lib/ruby/gems/3.4.0/bin
 
 alias vim="nvim"
 alias vi="nvim"
