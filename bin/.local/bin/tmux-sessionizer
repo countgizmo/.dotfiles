@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 is_git_directory() {
   printf "$1;$(cd $1; git rev-parse --is-inside-work-tree)\n"
 }
@@ -20,11 +22,10 @@ else
     ~/Projects/private/clojure \
     ~/Projects/private/xcode \
     ~/Projects/private/go \
+    ~/Projects/private/rails \
     -mindepth 1 -maxdepth 1 -type d -not -iwholename '*.git')
 
-  server_workflows=$(get_workflows ~/Projects/humbleai/humble-server.git)
   hai_workflows=$(get_workflows ~/Projects/humbleai/hai)
-  app_script_workflows=$(get_workflows ~/Projects/humbleai/humble-app-script.git)
   selected=$(printf "${personal}\n${server_workflows}\n${hai_workflows}\n${app_script_workflows}" | fzf)
 fi
 
