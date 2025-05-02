@@ -1,1 +1,2 @@
-theme = zenbones
+theme = dark:catppuccin-macchiato,light:catppuccin-latte
+macos-icon = retro
