@@ -27,12 +27,31 @@ require("lazy").setup({
   },
 
   -- Themes
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   'morhetz/gruvbox',
   'folke/tokyonight.nvim',
   'blazkowolf/gruber-darker.nvim',
   {
     'mcchrish/zenbones.nvim',
     dependencies = {'rktjmp/lush.nvim'}
+  },
+  'sainnhe/everforest',
+  {
+    "cpplain/flexoki.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  'NLKNguyen/papercolor-theme',
+  'shaunsingh/solarized.nvim',
+
+  {
+    'tadaa/vimade',
+    opts = {
+      ncmode = 'windows',
+      fadelevel = 0.9,
+      recipe = { 'minimalist', {animate = true} },
+    }
   },
 
   -- Random
@@ -94,6 +113,7 @@ require("lazy").setup({
   -- Terminal codes (for colorful log output)
   { 'm00qek/baleia.nvim', version = 'v1.3.0' },
 
+  { "Olical/nfnl", ft = "fennel" },
   -- Clojure
   'Olical/conjure',
   'guns/vim-sexp',
@@ -102,7 +122,7 @@ require("lazy").setup({
   'tpope/vim-repeat',
   {'guns/vim-clojure-highlight', ft = 'clojure'},
   {'clojure-vim/clojure.vim', ft = 'clojure'},
-  {'https://gitlab.com/invertisment/conjure-clj-additions-cider-nrepl-mw'},
+  -- {'https://gitlab.com/invertisment/conjure-clj-additions-cider-nrepl-mw'},
 
   'vimwiki/vimwiki',
 

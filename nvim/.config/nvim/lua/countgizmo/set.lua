@@ -63,8 +63,10 @@ vim.g["conjure#log#hud#ignore_low_priority"] = true
 --})
 
 vim.g.vimwiki_list = {
-  {path =  '~/Documents/vimwiki',
-   auto_diary_index = 1}
+  {
+    path =  '~/Documents/vimwiki',
+    auto_diary_index = 1
+  }
 }
 
 vim.opt.spelllang = "en_us"

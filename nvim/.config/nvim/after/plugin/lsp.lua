@@ -67,26 +67,26 @@ require('mason-lspconfig').setup({
 
 lsp.setup()
 
-local lspconfig = require('lspconfig')
-lspconfig.lua_ls.setup {
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
       diagnostics = {
-        globals = { 'vim' }
+        globals = { "vim" }
       }
     }
   }
-}
+})
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig.zls.setup {
-  capabilityiess = capabilities,
-}
+vim.lsp.config("zls", {
+  capabilities = capabilities
+});
 
-lspconfig.sourcekit.setup {
+
+vim.lsp.config('sourcekit', {
   cmd = {'/Library/Developer/CommandLineTools/usr/bin/sourcekit-lsp'}
-}
+});
 
 vim.diagnostic.config({
   virtual_text = false,

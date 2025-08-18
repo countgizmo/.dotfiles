@@ -36,3 +36,9 @@ vim.keymap.set("n", "YY", "va{Vy")
 
 -- Jump between test and function
 vim.keymap.set("n","tg", ":CcaNsJumpToAlternate<CR>")
+
+-- Highlight the current word and all occurences without jumping
+vim.keymap.set('n', '*', function()
+  vim.fn.setreg('/', vim.fn.expand('<cword>'))
+  vim.o.hlsearch = true
+end, { noremap = true })
