@@ -12,39 +12,58 @@ get_workflows() {
     | grep ";true" | sed "s/;true//"
 }
 
+
+main() {
+  local selected=""
+
+  if [[ $# -eq 1 ]]; then
+      selected=$1
+  else
+    personal=$(find ~/.dotfiles ~/Projects/private/computer-enhance \
+      ~/Projects/private/zig \
+      ~/Projects/private/clojure \
+      ~/Projects/private/xcode \
+      ~/Projects/private/go \
+      ~/Projects/private/rails \
+      -mindepth 1 -maxdepth 1 -type d -not -iwholename '*.git')
+
+    local hai_workflows=$(get_workflows ~/Projects/humbleai/hai)
+    selected=$(printf "${personal}\n${hai_workflows}" | fzf)
+  fi
+
+  if [[ -z $selected ]]; then
+      exit 0
+  fi
+
+  local selected_root_name=$(basename "$(dirname "$selected")" | tr . _)
+  local selected_name=$(basename "$selected" | tr . _)
+  local session_name="$selected_root_name/$selected_name"
+
+  # Check if tmux is running
+  local tmux_running
+  tmux_running=$(pgrep tmux || true)
+
+  # If not in tmux and tmux is not running, create new session
+  if [[ -z "${TMUX:-}" ]] && [[ -z "$tmux_running" ]]; then
+      tmux new-session -s "$session_name" -c "$selected"
+      exit 0
+  fi
+
+  # Check if session already exists
+  if ! tmux has-session -t="$session_name" 2>/dev/null; then
+      # Create new detached session
+      tmux new-session -ds "$session_name" -c "$selected"
+  fi
+
+  # Switch to the session (only if we're inside tmux)
+  if [[ -n "${TMUX:-}" ]]; then
+      tmux switch-client -t "$session_name"
+  else
+      # If tmux is running but we're not in it, attach to the session
+      tmux attach-session -t "$session_name"
+  fi
+}
+
 export -f is_git_directory
 
-if [[ $# -eq 1 ]]; then
-    selected=$1
-else
-  personal=$(find ~/.dotfiles ~/Projects/private/computer-enhance \
-    ~/Projects/private/zig \
-    ~/Projects/private/clojure \
-    ~/Projects/private/xcode \
-    ~/Projects/private/go \
-    ~/Projects/private/rails \
-    -mindepth 1 -maxdepth 1 -type d -not -iwholename '*.git')
-
-  hai_workflows=$(get_workflows ~/Projects/humbleai/hai)
-  selected=$(printf "${personal}\n${server_workflows}\n${hai_workflows}\n${app_script_workflows}" | fzf)
-fi
-
-if [[ -z $selected ]]; then
-    exit 0
-fi
-
-selected_root_name=$(basename "$(dirname "$selected")" | tr . _)
-selected_name=$(basename "$selected" | tr . _)
-session_name="$selected_root_name/$selected_name"
-tmux_running=$(pgrep tmux)
-
-
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $session_name -c $selected
-    exit 0
-fi
-
-if ! tmux has-session -t=$session_name 2> /dev/null; then
-    tmux new-session -ds $session_name -c $selected
-    tmux switch-client -t $session_name
-fi
+main "$@"
