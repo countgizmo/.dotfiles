@@ -1,5 +1,6 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -28,7 +29,8 @@ vim.opt.isfname:append("@-@")
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.updatetime = 250
-vim.opt.timeoutlen = 500
+vim.opt.timeoutlen = 250
+vim.opt.ttimeoutlen = -1
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -87,3 +89,5 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         vim.fn.winrestview(save_cursor)
     end,
 })
+
+-- vim.opt.rocks.enabled = false

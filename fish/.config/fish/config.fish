@@ -22,3 +22,5 @@ set --export PATH "$HOME/Projects/private/odin/Odin/" $PATH
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/ziggy/Projects/humbleai/google-cloud-sdk/path.fish.inc' ]; . '/Users/ziggy/Projects/humbleai/google-cloud-sdk/path.fish.inc'; end
+
+fzf --fish | source

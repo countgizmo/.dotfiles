@@ -10,7 +10,8 @@ function ClojureColors()
   vim.opt.background = 'light'
 end
 
-vim.cmd.colorscheme("catppuccin-macchiato")
+-- vim.cmd.colorscheme("catppuccin-macchiato")
+vim.cmd.colorscheme("newpaper")
 
 vim.g.zenbones = {
   lightness = "dim",

@@ -44,6 +44,12 @@ require("lazy").setup({
   },
   'NLKNguyen/papercolor-theme',
   'shaunsingh/solarized.nvim',
+  'karoliskoncevicius/distilled-vim',
+  {
+    "yorik1984/newpaper.nvim",
+    priority = 1000,
+    config = true,
+  },
 
   {
     'tadaa/vimade',
@@ -68,28 +74,26 @@ require("lazy").setup({
   'sindrets/diffview.nvim',
 
   -- LSP
+  'neovim/nvim-lspconfig',
   {
-    'VonHeikemen/lsp-zero.nvim',
-    dependencies = {
-      -- LSP Support
-      'neovim/nvim-lspconfig',
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-
-      -- Autocompletion
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lua',
-
-      -- Snippets
-      'L3MON4D3/LuaSnip',
-      -- Snippet Collection (Optional)
-      'rafamadriz/friendly-snippets',
-    }
+    "mason-org/mason.nvim",
+    opts = {}
   },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = {},
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
+  },
+
+  -- Autocompletion
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-nvim-lua',
 
   -- SQL
   'tpope/vim-dadbod',
@@ -140,22 +144,22 @@ require("lazy").setup({
   'pangloss/vim-javascript',
   'peitalin/vim-jsx-typescript',
 
-  -- Running HTTP requests
-  {
-    "vhyrro/luarocks.nvim",
-    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
-    config = true,
-  },
-  {
-    "rest-nvim/rest.nvim",
-    ft = "http",
-    dependencies = { "luarocks.nvim" },
-    config = function()
-      require("rest-nvim").setup()
-    end,
-  },
-
   'tpope/vim-unimpaired',
   'skywind3000/asyncrun.vim',
 
+  {
+    "mistweaverco/kulala.nvim",
+    keys = {
+      { "<leader>Rs", desc = "Send request" },
+      { "<leader>Ra", desc = "Send all requests" },
+      { "<leader>Rb", desc = "Open scratchpad" },
+    },
+    ft = { "http", "rest" },
+    opts = {
+      -- your configuration comes here
+      global_keymaps = true,
+      global_keymaps_prefix = "<leader>R",
+      kulala_keymaps_prefix = "",
+    },
+  },
 })

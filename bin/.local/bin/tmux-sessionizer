@@ -22,6 +22,7 @@ main() {
     personal=$(find ~/.dotfiles ~/Projects/private/computer-enhance \
       ~/Projects/private/zig \
       ~/Projects/private/clojure \
+      ~/Projects/private/odin \
       ~/Projects/private/xcode \
       ~/Projects/private/go \
       ~/Projects/private/rails \

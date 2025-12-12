@@ -1,6 +1,9 @@
-theme = dark:catppuccin-macchiato,light:catppuccin-latte
+theme = dark:Gruber Darker,light:Catppuccin Latte
 macos-icon = retro
 font-size = 14
-font-family = Fira Code
-window-theme = dark
+font-family = JetBrains Mono
+font-feature=-liga
+font-feature=-calt
+window-theme = auto
 window-padding-y = 5
+scrollback-limit = 1000000
