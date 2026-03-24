@@ -50,6 +50,13 @@ require("lazy").setup({
     priority = 1000,
     config = true,
   },
+  'rebelot/kanagawa.nvim',
+  {
+    "idr4n/github-monochrome.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
 
   {
     'tadaa/vimade',

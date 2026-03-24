@@ -7,3 +7,10 @@ newsboat/.newsboat/history.cmdline
 fish/.config/fish/completions/
 fish/.config/fish/config.fish.backup
 bin/.local/pipx/
+work
+create-db
+.DS_Store
+.lsp
+.clj-kondo
+**/bin/claude
+fish/.config/fish/conf.d/

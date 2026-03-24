@@ -12,6 +12,7 @@ end
 
 -- vim.cmd.colorscheme("catppuccin-macchiato")
 vim.cmd.colorscheme("newpaper")
+-- vim.cmd.colorscheme("github-monochrome-light")
 
 vim.g.zenbones = {
   lightness = "dim",
